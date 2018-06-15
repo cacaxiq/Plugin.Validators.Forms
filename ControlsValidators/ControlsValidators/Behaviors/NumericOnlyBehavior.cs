@@ -1,0 +1,25 @@
+﻿using ControlsValidators.Behaviors.Base;
+using Xamarin.Forms;
+
+namespace ControlsValidators.Behaviors
+{
+    public class NumericOnlyBehavior : BehaviorBase
+    {
+        protected override void HandleTextChanged(object sender, TextChangedEventArgs e)
+        {
+            base.HandleTextChanged(sender, e);
+
+            if (!string.IsNullOrEmpty(e.NewTextValue))
+            {
+                CleanErrorMessage(sender);
+                IsValid = int.TryParse(e.NewTextValue, out int value);
+            }
+
+            if (!IsValid)
+            {
+                SetErrorMessage(sender);
+                var entry = sender as Entry;
+            }
+        }
+    }
+}
