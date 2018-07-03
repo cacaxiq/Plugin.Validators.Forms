@@ -30,7 +30,7 @@ namespace ControlsValidators.Behaviors.Base
 
         protected virtual void HandleTextChanged(object sender, TextChangedEventArgs e)
         {
-            IsValid = true;
+            IsValid = false;
             if (FirstValidation)
                 FirstValidation = false;
         }
@@ -46,7 +46,7 @@ namespace ControlsValidators.Behaviors.Base
         #endregion
 
         #region ErrorMessage
-        public static readonly BindableProperty ErrorMessageProperty = BindableProperty.Create(nameof(ErrorMessage), typeof(string), typeof(EmptyBehavior), string.Empty, BindingMode.OneWayToSource);
+        public static readonly BindableProperty ErrorMessageProperty = BindableProperty.Create(nameof(ErrorMessage), typeof(string), typeof(EmptyBehavior), "Somente números", BindingMode.OneWayToSource);
 
         public string ErrorMessage
         {
@@ -59,15 +59,21 @@ namespace ControlsValidators.Behaviors.Base
         protected void SetErrorMessage(object sender)
         {
             var parent = ((Entry)sender).Parent;
-            var labelError = parent.FindByName<Label>("errorMessage");
-            labelError.Text = ErrorMessage;
+            if (parent != null)
+            {
+                var labelError = parent.FindByName<Label>("errorMessage");
+                labelError.Text = ErrorMessage;
+            }
         }
 
         protected void CleanErrorMessage(object sender)
         {
             var parent = ((Entry)sender).Parent;
-            var labelError = parent.FindByName<Label>("errorMessage");
-            labelError.Text = string.Empty;
+            if (parent != null)
+            {
+                var labelError = parent.FindByName<Label>("errorMessage");
+                labelError.Text = string.Empty;
+            }
         }
         #endregion
 

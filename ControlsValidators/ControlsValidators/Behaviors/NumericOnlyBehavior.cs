@@ -40,7 +40,6 @@ namespace ControlsValidators.Behaviors
             if (!IsValid)
             {
                 SetErrorMessage(sender);
-                var entry = sender as Entry;
             }
         }
     }
