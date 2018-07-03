@@ -50,5 +50,17 @@ namespace ControlsValidators.Tests.NumericOnlyBehaviorTest
             entry.Text = null;
             Assert.IsFalse(((NumericOnlyBehavior)entry.Behaviors[0]).IsValid);
         }
+
+        [TestMethod]
+        public void IsInvalidIfDecimal()
+        {
+            var entry = new Entry();
+            entry.Behaviors.Add(behavior);
+            entry.Text = "10.98";
+            Assert.IsFalse(((NumericOnlyBehavior)entry.Behaviors[0]).IsValid);
+
+            entry.Text = "10,98";
+            Assert.IsFalse(((NumericOnlyBehavior)entry.Behaviors[0]).IsValid);
+        }
     }
 }
