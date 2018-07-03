@@ -1,16 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <StackLayout
-    x:Class="ControlsValidators.ControlValidator"
+    x:Class="ControlsValidators.ControlDescription"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-
     <Label
-        x:Name="descriptionValidator"
+        x:Name="description"
         FontAttributes="Bold"
         FontSize="Medium" />
-    <Entry x:Name="entryValidator" FontSize="Medium" />
-    <Label
-        x:Name="errorMessage"
-        FontSize="Small"
-        TextColor="Red" />
+    <Label x:Name="label" FontSize="Medium" />
 </StackLayout>

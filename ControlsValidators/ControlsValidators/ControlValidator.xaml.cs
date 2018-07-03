@@ -1,17 +1,11 @@
-﻿
-using ControlsValidators.Behaviors.Base;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace ControlsValidators
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ControlValidator : ContentView
+    public partial class ControlValidator : StackLayout
     {
         #region DescriptionValidator
         public static readonly BindableProperty DescriptionValidatorProperty =
@@ -32,9 +26,15 @@ namespace ControlsValidators
         #endregion
 
         #region EntryValidator
-        public static readonly BindableProperty EntryValidatorProperty =
-    BindableProperty.Create(nameof(EntryValidator), typeof(string),
-        typeof(ControlValidator), string.Empty, BindingMode.OneWayToSource, null, EntryValidatorPropertyChanged);
+        public static readonly BindableProperty EntryValidatorProperty = 
+            BindableProperty.Create(
+                nameof(EntryValidator), 
+                typeof(string),
+                typeof(ControlValidator), 
+                string.Empty, 
+                BindingMode.OneWayToSource, 
+                null, 
+                EntryValidatorPropertyChanged);
 
         private static void EntryValidatorPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
